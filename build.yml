@@ -1,0 +1,42 @@
+name: Build and Tag Docker Image
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Define variáveis para as tags
+      - name: Set image tag
+        id: vars
+        run: |
+          TAG=${GITHUB_SHA::7}   # primeiros 7 caracteres do commit
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "latest_tag=latest" >> $GITHUB_OUTPUT
+
+      # Build com múltiplas tags (ex: latest e hash do commit)
+      - name: Build Docker image
+        run: |
+          docker build -t web-massagem-html:${{ steps.vars.outputs.tag }} \
+                       -t web-massagem-html:${{ steps.vars.outputs.latest_tag }} .
+
+      # Testa se o container sobe corretamente
+      - name: Run container for test
+        run: |
+          docker run -d --rm -p 8080:80 --name web-massagem-html web-massagem-html:${{ steps.vars.outputs.tag }}
+          sleep 3
+          curl -I http://web-massagem.local:8080
+
+      - name: Cleanup
+        if: always()
+        run: docker stop meu-site-html-test || true
