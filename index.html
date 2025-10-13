@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bem-Estar & Massagens</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-green-50 text-gray-800 font-sans">
+
+  <!-- Hero Section -->
+  <header class="relative bg-[url('https://images.unsplash.com/photo-1583454110551-21f2fa2e2f4c?auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center h-[90vh] flex items-center justify-center">
+    <div class="bg-black bg-opacity-50 absolute inset-0"></div>
+    <div class="relative text-center text-white px-4">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Relaxe. Renove. Reequilibre.</h1>
+      <p class="text-lg md:text-xl mb-8">Experimente massagens terapêuticas e momentos de puro bem-estar.</p>
+      <a href="#agendar" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full text-lg font-semibold transition">Agende sua Sessão</a>
+    </div>
+  </header>
+
+  <!-- Sobre -->
+  <section class="py-16 px-4 text-center max-w-3xl mx-auto">
+    <h2 class="text-3xl font-bold mb-6">Sobre Nós</h2>
+    <p class="text-lg leading-relaxed text-gray-600">
+      Somos especialistas em proporcionar momentos únicos de relaxamento.  
+      Utilizamos técnicas tradicionais e modernas para aliviar tensões, melhorar a circulação e renovar suas energias.
+    </p>
+  </section>
+
+  <!-- Serviços -->
+  <section class="bg-white py-16 px-4">
+    <h2 class="text-3xl font-bold text-center mb-10">Nossos Serviços</h2>
+    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+      <div class="bg-green-100 rounded-2xl p-6 text-center shadow hover:shadow-lg transition">
+        <img src="https://images.unsplash.com/photo-1616401784845-180882ba9c69?auto=format&fit=crop&w=600&q=80" alt="Massagem Relaxante" class="rounded-xl mb-4 h-40 w-full object-cover">
+        <h3 class="text-xl font-semibold mb-2">Massagem Relaxante</h3>
+        <p class="text-gray-600 mb-4">Ideal para aliviar o estresse e promover sensação de bem-estar profundo.</p>
+        <span class="font-bold text-green-600">R$ 120 / 60min</span>
+      </div>
+      <div class="bg-green-100 rounded-2xl p-6 text-center shadow hover:shadow-lg transition">
+        <img src="https://images.unsplash.com/photo-1556228453-efd0ef3cc4c6?auto=format&fit=crop&w=600&q=80" alt="Massagem Terapêutica" class="rounded-xl mb-4 h-40 w-full object-cover">
+        <h3 class="text-xl font-semibold mb-2">Massagem Terapêutica</h3>
+        <p class="text-gray-600 mb-4">Perfeita para dores musculares e recuperação física.</p>
+        <span class="font-bold text-green-600">R$ 150 / 60min</span>
+      </div>
+      <div class="bg-green-100 rounded-2xl p-6 text-center shadow hover:shadow-lg transition">
+        <img src="https://images.unsplash.com/photo-1612143074974-43c3c90f2072?auto=format&fit=crop&w=600&q=80" alt="Drenagem Linfática" class="rounded-xl mb-4 h-40 w-full object-cover">
+        <h3 class="text-xl font-semibold mb-2">Drenagem Linfática</h3>
+        <p class="text-gray-600 mb-4">Ajuda a reduzir retenção de líquidos e melhorar a circulação.</p>
+        <span class="font-bold text-green-600">R$ 140 / 60min</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agendamento com Formspree -->
+  <section id="agendar" class="py-16 px-4 bg-green-50">
+    <h2 class="text-3xl font-bold text-center mb-8">Agende Sua Sessão</h2>
+    <form 
+      action="https://formspree.io/f/SEU_ENDPOINT_AQUI" 
+      method="POST" 
+      class="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow space-y-4"
+    >
+      <input type="text" name="nome" placeholder="Nome completo" class="w-full border rounded p-3" required>
+      <input type="tel" name="telefone" placeholder="Telefone / WhatsApp" class="w-full border rounded p-3" required>
+      <select name="tipo_de_massagem" class="w-full border rounded p-3" required>
+        <option value="">Selecione o tipo de massagem</option>
+        <option>Relaxante</option>
+        <option>Terapêutica</option>
+        <option>Drenagem Linfática</option>
+      </select>
+      <input type="date" name="data" class="w-full border rounded p-3" required>
+      
+      <!-- Campo invisível para Formspree não tratar como spam -->
+      <input type="text" name="_gotcha" style="display:none">
+
+      <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white p-3 rounded font-semibold transition">Enviar Pedido</button>
+    </form>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="bg-green-600 text-white text-center py-6">
+    <p>&copy; 2025 Bem-Estar & Massagens. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>
